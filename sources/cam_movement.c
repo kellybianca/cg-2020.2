@@ -36,10 +36,10 @@ void moveCam(unsigned char key, int x, int y) {
         case '/':
             resetOrgDir((Camera*)cam);
             break;  
-        case 'o':
+        case 'p':
             change_door_state();
             break;
-        case 'p':
+        case 'j':
             change_window_state();
             break;
     }
