@@ -1,0 +1,16 @@
+all:	main clean
+main:	obj_import.o	camera.o	cam_movement.o	draw_objects.o stb_image.o
+	gcc obj_import.o camera.o cam_movement.o draw_objects.o stb_image.o main.c -o main.exe -I"C:\FreeGlut\include" -L"C:\FreeGlut\lib" -lfreeglut -lopengl32 -lglu32 -lm
+obj_import.o:
+	gcc sources/obj_import.c -c -I"C:\FreeGlut\include" -L"C:\FreeGlut\lib" -lfreeglut -lopengl32 -lglu32 -lm
+camera.o:
+	gcc sources/camera.c -c -I"C:\FreeGlut\include" -L"C:\FreeGlut\lib" -lfreeglut -lopengl32 -lglu32 -lm
+cam_movement.o:
+	gcc sources/cam_movement.c -c -I"C:\FreeGlut\include" -L"C:\FreeGlut\lib" -lfreeglut -lopengl32 -lglu32 -lm
+draw_objects.o:
+	gcc sources/draw_objects.c -c -I"C:\FreeGlut\include" -L"C:\FreeGlut\lib" -lfreeglut -lopengl32 -lglu32 -lm
+stb_image.o:
+	gcc sources/stb_image.c -c 
+clean:
+	del *.o
+
