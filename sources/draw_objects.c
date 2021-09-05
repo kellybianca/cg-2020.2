@@ -30,7 +30,7 @@ void draw_axis()
     glLineWidth(width);
     glColor3f(1.0f, 0.0f, 0.0f);
     draw_line(0.0f, 0.0f, 0.0f, 100, 0.0f, 0.0f);
-	draw_line(0.0f, 0.0f, 0.0f, 100, 0.0f, 0.0f);	
+    draw_line(0.0f, 0.0f, 0.0f, 100, 0.0f, 0.0f);
     draw_line(0.0f, 0.0f, 0.0f, 100, 0.0f, 0.0f);
     draw_line(0.0f, 0.0f, 0.0f, 100, 0.0f, 0.0f);
     draw_line(0.0f, 0.0f, 0.0f, 100, 0.0f, 0.0f);
@@ -94,7 +94,7 @@ void draw_window()
 
     //base
     glPushMatrix();
-    glTranslatef ( 28 , 30 , 63 ) ;
+    glTranslatef(28, 30, 63);
     glScalef(0.5, 0.7, 0.5);
     draw_objects(22, 0.84, 0.82, 1.27, 1);
     glPopMatrix();
@@ -116,53 +116,11 @@ void draw_window()
     glPopMatrix();
 }
 
-void draw_cube()
-{
-
-    glBegin(GL_QUADS);
-    //glColor3f (0.5 , 0.5 , 0.5 ) ;
-    glColor3f(1, 1, 1);
-
-    glTexCoord2f(0, 0);
-    glNormal3f(0, 0, 1);
-    glVertex3f(0, 0, 0);
-
-    glTexCoord2f(1, 0);
-    glNormal3f(0, 0, 1);
-    glVertex3f(1.5, 0, 0);
-
-    glTexCoord2f(1, 1);
-    glNormal3f(0, 0, 1);
-    glVertex3f(1.5, 1, 0);
-
-    glTexCoord2f(0, 1);
-    glNormal3f(0, 0, 1);
-    glVertex3f(0, 1, 0);
-
-    glEnd();
-}
-
-void draw_helix()
-{
-    //glScalef(5.0,5.0,5.0);
-    draw_objects(8, 0.8, 0.8, 0, 1);
-    glTranslatef(0, 1.7, 0);
-    glScalef(0.75, 0.75, 0.75);
-    glRotatef(90, 1, 0, 0); //rotaciona o ventilador pro plano xy
-
-    HEX_ANGLE += 1;                //gira um grau a cada redisplay
-    HEX_ANGLE %= 360;              //mantém o angulo entre 0 e 360
-    glRotatef(HEX_ANGLE, 0, 1, 0); //Gira no Y pq  ventilador original ta no plano XZ e não no XY
-
-    draw_objects(7, 0.5, 0.2, 0.2, 1);
-}
-
 void draw_door()
 {
     glEnable(GL_TEXTURE_2D);
-
-    glTranslatef(-55,1,-72);
-    glRotated(10,0,1,0);
+    glTranslatef(-55, 1, -72);
+    glRotated(10, 0, 1, 0);
     aply_texture(7);
     glRotatef(DOOR_ROT, 0, 1, 0); //gira a porta conforme foi aberta/fechada
     glScalef(11.0, 8.5, 5.0);
@@ -194,7 +152,6 @@ void draw_house()
     glEnable(GL_TEXTURE_2D);
     aply_texture(3);
     glTranslatef(0, 0, 1.5);
-    //glRotatef(180, 0, 1, 0);
     draw_objects(19, 1, 1, 1, 1);
     glDisable(GL_TEXTURE_2D);
     glPopMatrix();
@@ -221,29 +178,27 @@ void draw_house()
     glPushMatrix();
     glEnable(GL_TEXTURE_2D);
     aply_texture(3);
-
     glTranslatef(0, 0, -0.5);
-    //glRotatef(180, 0, 1, 0);
     draw_objects(21, 1, 1, 1, 1);
     glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 }
 
-void draw_sink() // pia da cozinha
+void draw_sink()
 {
+    // pia da cozinha
     glPushMatrix();
     glEnable(GL_TEXTURE_2D);
     glTranslatef(-20, 5, 63);
     glScalef(7.0, 7.0, 7.0);
     aply_texture(6); // textura de granito
-    glRotatef(-90,0,1,0);
+    glRotatef(-90, 0, 1, 0);
     draw_objects(25, 1, 1, 1, 1);
     glPopMatrix();
 }
 
 void draw_bookcase()
 {
-    int i = 0;
     /*estante*/
     glPushMatrix();
     glEnable(GL_TEXTURE_2D);
@@ -261,7 +216,18 @@ void draw_bookcase()
     glScalef(3.0, 3.0, 3.0);
     draw_objects(29, 0.5, 0.5, 0.5, 1);
     glPopMatrix();
+}
 
+void draw_fridge()
+{
+    glPushMatrix();
+    glEnable(GL_TEXTURE_2D);
+    glTranslatef(7, 1, 60);
+    aply_texture(5);
+    glScalef(9.0, 9.0, 7.0);
+    draw_objects(6, 0.75, 0.75, 0.75, 1);
+    glDisable(GL_TEXTURE_2D);
+    glPopMatrix();
 }
 
 void change_door_state()

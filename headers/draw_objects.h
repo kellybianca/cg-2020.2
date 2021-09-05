@@ -39,6 +39,10 @@ void draw_bed();
 
 void draw_bookcase();
 
+void draw_sink();
+
+void draw_fridge(); // desenha a geladeira
+
 /*Muda o estado da porta entre aberta/fechada*/
 void change_door_state();
 

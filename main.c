@@ -35,7 +35,7 @@ int main(int argc, char **argv)
     glutInit(&argc, argv);
     glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGB | GLUT_DEPTH);
     glutInitWindowSize(WINDOW_WIDTH, WINDOW_HEIGHT);
-    glutCreateWindow("CG - ");
+    glutCreateWindow("CG - Kitchen");
 
     glEnable(GL_DEPTH_TEST);
     glDepthMask(GL_TRUE);
@@ -44,7 +44,7 @@ int main(int argc, char **argv)
     glCullFace(GL_BACK);
     glDepthRange(0.0f, 1.0f);
 
-    // setup_lighting();
+    setup_lighting();
 
     cam = (Camera *)init_camera();
     init_obj_vecs();
@@ -52,14 +52,7 @@ int main(int argc, char **argv)
 
     load_obj_display("./models/cadeira.obj", 0);
 
-    // load_obj_display("./models/taca.obj", 2);
-
-    // load_obj_display("./models/basquete.obj", 4);
-
     load_obj_display("./models/geladeira.obj", 6);
-
-    // load_obj_display("./models/ventilador/helice.obj", 7);
-    // load_obj_display("./models/ventilador/base_sem_helice.obj", 8);
 
     load_obj_display("./models/lixinho.obj", 11);
 
@@ -68,7 +61,6 @@ int main(int argc, char **argv)
     load_obj_display("./models/janelaFechada.obj", 14);
 
     load_obj_display("./models/mesa.obj", 15);
-    // load_obj_display("./models/quadro.obj", 3);
 
     load_obj_display("./models/casa/chao.obj", 17);
     load_obj_display("./models/casa/teto.obj", 18);
@@ -81,15 +73,13 @@ int main(int argc, char **argv)
     load_obj_display("./models/janela/janela2.obj", 24);
 
     load_obj_display("./models/pia.obj", 25);
-    // load_obj_display("./models/cama/lencol.obj", 26);
-    // load_obj_display("./models/cama/travesseiro.obj", 27);
+
 
     load_obj_display("./models/estante/estante.obj", 28);
     load_obj_display("./models/estante/taca.obj", 29);
 
-    // load_obj_display("./models/luminaria.obj", 30);
-    // load_obj_display("./models/luminaria2.obj", 31);
-
+    load_obj_display("./models/luminaria.obj", 30);
+    load_obj_display("./models/luminaria2.obj", 31);
     load_texture("textures/quadro-vangogh.jpg", 0);
     load_texture("textures/container.jpg", 1);
     load_texture("textures/pisoceramica.jpg", 2);
@@ -145,14 +135,6 @@ void display()
 
         glPopMatrix();)
 
-    //ventilador
-    glPushMatrix();
-    glTranslatef(70, 48.8, -30);
-    glScalef(4.0, 4.0, 4.0);
-    glRotatef(90, 0, 0.9, 0);
-    draw_helix();
-    glPopMatrix();
-
     //casa
     draw_house();
 
@@ -165,15 +147,7 @@ void display()
     glPopMatrix();
 
     //geladeira
-    glPushMatrix();
-    glEnable(GL_TEXTURE_2D);
-    glTranslatef(7, 1, 60);
-    aply_texture(5);
-    glScalef(9.0, 9.0, 7.0);
-    draw_objects(6, 0.75, 0.75, 0.75, 1);
-    glDisable(GL_TEXTURE_2D);
-
-    glPopMatrix();
+    draw_fridge();
 
     //janela
     draw_window();
@@ -200,35 +174,11 @@ void display()
 
     //luminaria
     glPushMatrix();
-    glTranslatef(20, 15, -62);
+    glTranslatef(0, 16, 0);
     glScalef(7.0, 7.0, 7.0);
-    // glRotatef(-90, 0, 1, 0);
-    draw_objects(30, 1, 0, 0, 1);
+    draw_objects(30, 1, 1, 1, 1);
     glPopMatrix();
 
-    //luminaria2
-    glPushMatrix();
-    glTranslatef(0, 68, 0);
-    glScalef(7.0, 7.0, 7.0);
-    draw_objects(31, 1, 1, 1, 1);
-    glPopMatrix();
-
-    //quadro
-    glPushMatrix();
-    glTranslatef(0, 30, -73.7);
-    glScalef(1.5, 1.5, 1.5);
-    draw_objects(3, 0.1, 0.5, 0.8, 0);
-    glPopMatrix();
-
-    glPushMatrix();
-    glEnable(GL_TEXTURE_2D);
-    glTranslatef(1.75, 30.5, -71);
-    //Desenha a imagem que vai no quadro
-    aply_texture(0);
-    glScalef(10.0, 9.0, 1.0);
-    draw_cube();
-    glDisable(GL_TEXTURE_2D);
-    glPopMatrix();
 
     glFlush();
     glutSwapBuffers();
@@ -238,28 +188,21 @@ void display()
 void setup_lighting()
 {
     float mat_specular[] = {1.0f, 1.0f, 1.0f}; //branco
-    float mat_shininess[] = {50.0f};
-    float light_position[] = {0.0f, 65.0f, 0.0f, 1.0f};
-    float light_diffuse[] = {1.0f, 1.0f, 1.0f}; // Luz branca
-
-    glMaterialfv(GL_FRONT, GL_SHININESS, mat_shininess);
+    float light_position[] = {0.0f, 16.0f, 0.0f, 1.0f};
+    float light_diffuse[] = {0.5f, 0.5f, 0.5f}; // lanterna clareando o ambiente
 
     //luminaria
     glMaterialfv(GL_LIGHT1, GL_SPECULAR, mat_specular);
     glLightfv(GL_LIGHT1, GL_POSITION, light_position);
     glLightfv(GL_LIGHT1, GL_DIFFUSE, light_diffuse);
 
-    //spot
+    //spot  
+    float spot_direction[] = {-0.7f, -0.5f, 0.0f};
+    float spot_cutoff[] = {30.0f};
+    float spot_position[] = {60, 15, 8, 1.0};
+    float spot_difuse[] = {1.0, 1.0, 1.0}; // luz branca do spot
 
-    float spot_direction[] = {-0.7f, -0.3f, 0.0f};
-    float spot_cutoff[] = {15.0f};
-    float spot_specular[] = {1.0f, 1.0f, 0.0f}; //amarelo
-    float spot_position[] = {20, 25, -61, 1.0};
-    float spot_difuse[] = {1.0, 1.0, 0.0};
-
-    glMaterialfv(GL_LIGHT0, GL_SPECULAR, spot_specular);
     glLightfv(GL_LIGHT0, GL_DIFFUSE, spot_difuse);
-
     glLightfv(GL_LIGHT0, GL_POSITION, spot_position);
     glLightfv(GL_LIGHT0, GL_SPOT_DIRECTION, spot_direction);
     glLightfv(GL_LIGHT0, GL_SPOT_CUTOFF, spot_cutoff);

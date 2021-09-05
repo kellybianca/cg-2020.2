@@ -18,3 +18,6 @@ Modelar o interior da Cozinha: paredes, teto, piso;
 - [ ] 1 Janela: a janela deverá ser aberta e fechada usando o teclado;
 O usuário deverá navegar com o teclado/mouse na modelagem permitindo ao usuário visualizar o Quarto em 360º (dica: deixe a Cozinha bem ampla); 
 
+
+O código foi baseado no código do:
+https://github.com/samuel0072/t_computacao_grafica 
