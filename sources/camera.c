@@ -17,9 +17,9 @@ void cross_v_u(float v[], float u[], float output[]);
 
 Camera* init_camera() {
     Camera* c = (Camera*)malloc(sizeof(Camera));
-    c->p_x = 0;
+    c->p_x = 1;
     c->p_y = 20;
-    c->p_z = 1;
+    c->p_z = -20;
 
     c->n_x = 0;
     c->n_y = 1;
@@ -68,25 +68,21 @@ float* getCamNV(Camera* c) {
 
 void moveCamFoward(Camera* c) {
     c->p_x += CAM_MV_SPEED * c->v_x;
-    //c->p_y += CAM_MV_SPEED * c->v_y;
     c->p_z += CAM_MV_SPEED * c->v_z;
 }
 
 void moveCamBackwards(Camera* c) {
     c->p_x += - CAM_MV_SPEED * c->v_x;
-    //c->p_y += - CAM_MV_SPEED * c->v_y;
     c->p_z += - CAM_MV_SPEED * c->v_z;
 }
 
 void moveCamRight(Camera* c) {
     c->p_x +=  CAM_MV_SPEED * c->s_x;
-    //c->p_y +=  CAM_MV_SPEED * c->s_y;
     c->p_z +=  CAM_MV_SPEED * c->s_z;
 }
 
 void moveCamLeft(Camera* c) {
     c->p_x +=  - CAM_MV_SPEED * c->s_x;
-    //c->p_y +=  - CAM_MV_SPEED * c->s_y;
     c->p_z +=  - CAM_MV_SPEED * c->s_z;
 }
 
@@ -106,11 +102,9 @@ void moveCamDown(Camera* c) {
 
 void turnCamBack(Camera* c) {
     c->v_x = -  c->v_x;
-    //c->v_y = -  c->v_y;
     c->v_z = -  c->v_z;
 
     c->s_x = - c->s_x;
-    //c->s_y = -  c->s_y;
     c->s_z = -  c->s_z;
 
 }
@@ -141,13 +135,6 @@ void rotateCamRight(Camera* c) {
     c->v_y = v_scaled[IY] + yxv[IY] + 1*const3;//o vetor Y é 1 na cord y
     c->v_z = v_scaled[IZ] + yxv[IZ] + 0*const3;//o vetor Y é 0 na cord z
 
-    /*
-    c->v_x = cos_rot * c->v_x + sin_rot * c->s_x;
-    c->v_y = cos_rot * c->v_y + sin_rot * c->s_y;
-    c->v_z = cos_rot * c->v_z + sin_rot * c->s_z;
-    */
-    
-    
     updateSvec(c);
 } 
 
@@ -174,12 +161,6 @@ void rotateCamLeft(Camera* c) {
     c->v_x = v_scaled[IX] + yxv[IX] + 0*const3;//o vetor Y é 0 na cord x
     c->v_y = v_scaled[IY] + yxv[IY] + 1*const3;//o vetor Y é 1 na cord y
     c->v_z = v_scaled[IZ] + yxv[IZ] + 0*const3;//o vetor Y é 0 na cord z
-
-    /*
-    c->v_x = cos_rot*c->v_x + sin_rot* c->s_x;
-    c->v_y = cos_rot*c->v_y + sin_rot* c->s_y;
-    c->v_z = cos_rot*c->v_z + sin_rot* c->s_z;
-    */
     
     
     updateSvec(c);

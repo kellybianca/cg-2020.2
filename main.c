@@ -50,7 +50,6 @@ int main(int argc, char **argv)
     init_obj_vecs();
     init_textures_vec();
 
-    load_obj_display("./models/cadeira.obj", 0);
 
     load_obj_display("./models/geladeira.obj", 6);
 
@@ -74,12 +73,11 @@ int main(int argc, char **argv)
 
     load_obj_display("./models/pia.obj", 25);
 
-
     load_obj_display("./models/estante/estante.obj", 28);
     load_obj_display("./models/estante/taca.obj", 29);
-
     load_obj_display("./models/luminaria.obj", 30);
     load_obj_display("./models/luminaria2.obj", 31);
+
     load_texture("textures/quadro-vangogh.jpg", 0);
     load_texture("textures/container.jpg", 1);
     load_texture("textures/pisoceramica.jpg", 2);
@@ -119,21 +117,6 @@ void display()
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
-
-    D(
-        glPushMatrix();
-        draw_axis();
-        glPopMatrix();
-
-        glPushMatrix();
-        draw_axis_ticks();
-        glPopMatrix();
-
-        glPushMatrix();
-        glTranslatef(20, 25, -61);
-        glutSolidSphere(1.0, 50, 50);
-
-        glPopMatrix();)
 
     //casa
     draw_house();
@@ -188,7 +171,7 @@ void display()
 void setup_lighting()
 {
     float mat_specular[] = {1.0f, 1.0f, 1.0f}; //branco
-    float light_position[] = {0.0f, 16.0f, 0.0f, 1.0f};
+    float light_position[] = {0.0f, 18.0f, 0.0f, 1.0f};
     float light_diffuse[] = {0.5f, 0.5f, 0.5f}; // lanterna clareando o ambiente
 
     //luminaria
