@@ -13,9 +13,9 @@ e em seguida:
 
 Modelar o interior da Cozinha: paredes, teto, piso; 
 
-- [ ]  A cozinha deverá ter no mínimo 5 objetos (mesa, cadeira, armario, geladeira, fogão?);
-- [ ] 1 Porta: a porta deverá ser aberta e fechada usando o teclado;
-- [ ] 1 Janela: a janela deverá ser aberta e fechada usando o teclado;
+- [ x ]  A cozinha deverá ter no mínimo 5 objetos (mesa, cadeira, armario, geladeira, fogão?);
+- [ x ] 1 Porta: a porta deverá ser aberta e fechada usando o teclado;
+- [ x ] 1 Janela: a janela deverá ser aberta e fechada usando o teclado;
 O usuário deverá navegar com o teclado/mouse na modelagem permitindo ao usuário visualizar o Quarto em 360º (dica: deixe a Cozinha bem ampla); 
 
 
