@@ -199,6 +199,7 @@ void draw_sink()
 
 void draw_bookcase()
 {
+    int i = 0;
     /*estante*/
     glPushMatrix();
     glEnable(GL_TEXTURE_2D);
@@ -212,8 +213,12 @@ void draw_bookcase()
 
     /*taca*/
     glPushMatrix();
-    glTranslatef(70, 32, 3);
     glScalef(3.0, 3.0, 3.0);
+    glTranslatef(21, 11, -15);
+    for(i = 0; i < 7; i++) {
+        glTranslatef(0, 0, 3);
+        draw_objects(29, 0.5, 0.5, 0.5, 1);
+    }
     draw_objects(29, 0.5, 0.5, 0.5, 1);
     glPopMatrix();
 }
