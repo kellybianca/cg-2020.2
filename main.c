@@ -82,9 +82,8 @@ int main(int argc, char **argv)
     load_texture("textures/container.jpg", 1);
     load_texture("textures/pisoceramica.jpg", 2);
     load_texture("textures/papeldeparede2.jpg", 3);
-    load_texture("textures/textura_cama.jpg", 4);
     load_texture("textures/geladeira.jpg", 5);
-    load_texture("textures/textura_lencol.jpg", 6);
+    load_texture("textures/textura_pia.jpg", 6);
     load_texture("textures/texturademadeira.jpg", 7);
     load_texture("textures/porta.jpg", 8);
 
