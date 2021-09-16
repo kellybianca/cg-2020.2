@@ -116,6 +116,24 @@ void draw_window()
     glPopMatrix();
 }
 
+/*----------Ventilador--------------*/
+void draw_helix() { 
+    //glScalef(5.0,5.0,5.0);
+    draw_objects(8, 0.2, 0.8, 0.8, 1);
+    glTranslatef(0, 0.5, 0);
+    glScalef(1.5, 1.5, 1.2);
+    glRotatef(180, 1, 0, 0);//rotaciona o ventilador pro plano xy
+
+    HEX_ANGLE += 7;//gira um grau a cada redisplay
+    HEX_ANGLE %= 360;//mantém o angulo entre 0 e 360
+    glRotatef(HEX_ANGLE, 0, 1, 0);//Gira no Y pq  ventilador original ta no plano XZ e não no XY
+
+    draw_objects(7, 1, 1, 1, 1);
+    
+    
+    
+}
+
 void draw_door()
 {
     glEnable(GL_TEXTURE_2D);

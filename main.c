@@ -52,7 +52,8 @@ int main(int argc, char **argv)
 
 
     load_obj_display("./models/geladeira.obj", 6);
-
+    load_obj_display("./models/ventilador/helice.obj", 7);
+    load_obj_display("./models/ventilador/base_sem_helice.obj", 8);
     load_obj_display("./models/lixinho.obj", 11);
 
     load_obj_display("./models/portaFechada.obj", 13);
@@ -117,6 +118,14 @@ void display()
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
 
+    //ventilador
+    glPushMatrix();
+    glTranslatef (-18, 71, -15);
+    glScalef(4.0, 8.0, 4.0);
+    glRotatef(-180, 90, 0, 90);
+    draw_helix();
+    glPopMatrix();
+    
     //casa
     draw_house();
 
@@ -160,7 +169,6 @@ void display()
     glScalef(7.0, 7.0, 7.0);
     draw_objects(30, 1, 1, 1, 1);
     glPopMatrix();
-
 
     glFlush();
     glutSwapBuffers();
