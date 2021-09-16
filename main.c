@@ -79,7 +79,7 @@ int main(int argc, char **argv)
     load_obj_display("./models/luminaria.obj", 30);
     load_obj_display("./models/luminaria2.obj", 31);
 
-    load_texture("textures/quadro-vangogh.jpg", 0);
+    load_texture("textures/cores.jpg", 0);
     load_texture("textures/container.jpg", 1);
     load_texture("textures/pisoceramica.jpg", 2);
     load_texture("textures/papeldeparede2.jpg", 3);
@@ -170,6 +170,22 @@ void display()
     draw_objects(30, 1, 1, 1, 1);
     glPopMatrix();
 
+    //quadro
+    glPushMatrix();
+    glTranslatef ( 0 ,30 , -73.7 ) ;
+    glScalef(1.5, 1.5, 1.5);
+    draw_objects(3, 0.1, 0.5, 0.8, 0);
+    glPopMatrix();
+
+    glPushMatrix();
+    glEnable( GL_TEXTURE_2D ); 
+    glTranslatef ( 1.75 ,30.5 , -71 ) ;
+    //Desenha a imagem que vai no quadro
+    aply_texture(0);
+    glScalef(10.0, 10, 1.0);
+    draw_cube();
+    glDisable( GL_TEXTURE_2D ); 
+    glPopMatrix();
     glFlush();
     glutSwapBuffers();
     glutPostRedisplay();

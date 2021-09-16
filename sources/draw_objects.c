@@ -116,6 +116,32 @@ void draw_window()
     glPopMatrix();
 }
 
+void draw_cube() {
+    
+    glBegin(GL_QUADS);
+        //glColor3f (0.5 , 0.5 , 0.5 ) ;
+        glColor3f(1, 1, 1);
+
+        glTexCoord2f(0, 0);
+        glNormal3f(0, 0, 1);
+		glVertex3f(0, 0, 0);
+        
+        glTexCoord2f(1, 0);
+        glNormal3f(0, 0, 1);
+		glVertex3f(1.5, 0, 0);
+        
+        glTexCoord2f(1, 1);
+        glNormal3f(0, 0, 1);
+        glVertex3f(1.5, 1, 0);
+
+        glTexCoord2f(0, 1);
+        glNormal3f(0, 0, 1);
+        glVertex3f(0, 1, 0);
+    
+    glEnd();
+    
+}
+
 /*----------Ventilador--------------*/
 void draw_helix() { 
     //glScalef(5.0,5.0,5.0);
