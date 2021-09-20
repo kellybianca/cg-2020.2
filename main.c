@@ -145,9 +145,13 @@ void display()
 
     //lixeira
     glPushMatrix();
+    glEnable( GL_TEXTURE_2D ); 
+
     glTranslatef(40, 1.5, -66);
     glScalef(3.0, 3.0, 3.0);
+    aply_texture(3);
     draw_objects(11, 0.5,  0.5, 0.5, 1);
+    glDisable(GL_TEXTURE_2D);
     glPopMatrix();
 
     //porta
@@ -195,7 +199,7 @@ void setup_lighting()
 {
     float mat_specular[] = {1.0f, 1.0f, 1.0f}; //branco
     float light_position[] = {0.0f, 18.0f, 0.0f, 1.0f};
-    float light_diffuse[] = {0.5f, 0.5f, 0.5f}; // lanterna clareando o ambiente
+    float light_diffuse[] = {0.6f, 0.6f, 0.6f}; // lanterna clareando o ambiente
 
     //luminaria
     glMaterialfv(GL_LIGHT1, GL_SPECULAR, mat_specular);

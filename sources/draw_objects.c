@@ -150,7 +150,7 @@ void draw_helix() {
     glScalef(1.5, 1.5, 1.2);
     glRotatef(180, 1, 0, 0);//rotaciona o ventilador pro plano xy
 
-    HEX_ANGLE += 7;//gira um grau a cada redisplay
+    HEX_ANGLE += 4;//gira um grau a cada redisplay
     HEX_ANGLE %= 360;//mantém o angulo entre 0 e 360
     glRotatef(HEX_ANGLE, 0, 1, 0);//Gira no Y pq  ventilador original ta no plano XZ e não no XY
 
@@ -165,7 +165,7 @@ void draw_door()
     glEnable(GL_TEXTURE_2D);
     glTranslatef(-55, 1, -72);
     glRotated(10, 0, 1, 0);
-    aply_texture(7);
+    aply_texture(1);
     glRotatef(DOOR_ROT, 0, 1, 0); //gira a porta conforme foi aberta/fechada
     glScalef(11.0, 8.5, 5.0);
     draw_objects(13, 0.5, 0.5, 0.5, 1);
